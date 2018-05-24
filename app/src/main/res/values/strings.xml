@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Zoo</string>
+    <string name="baboon">Baboon</string>
+    <string name="baboon_desc">Baboons are Old World monkeys belonging to the genus Papio, part of the subfamily Cercopithecinae which are found natively in very specific areas of Africa and the Arabian Peninsula.</string>
+    <string name="bulldog">Bulldog</string>
+    <string name="bulldog_desc">A Bulldog is a medium-sized breed of dog commonly referred to as the English Bulldog or British Bulldog.</string>
+    <string name="panda">Panda</string>
+    <string name="panda_desc">The giant panda also known as panda bear or simply panda, is a bear native to south central China.</string>
+    <string name="swallow_bird">Swallow Bird</string>
+    <string name="swallow_bird_desc">The swallows and martins, or Hirundinidae, are a family of passerine birds found around the world on all continents except Antarctica.</string>
+    <string name="white_tiger">White Tiger</string>
+    <string name="white_tiger_desc">The white tiger or bleached tiger is a pigmentation variant of the Bengal tiger, which is reported in the wild from time to time in the Indian states of Madhya Pradesh, Assam, West Bengal and Bihar in the Sunderbans region and especially in the former State of Rewa.</string>
+    <string name="zebra">Zebra</string>
+    <string name="zebra_desc">Zebras are several species of African equids (horse family) united by their distinctive black and white striped coats.</string>
 </resources>
