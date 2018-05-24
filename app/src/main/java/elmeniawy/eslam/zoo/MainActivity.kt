@@ -2,6 +2,7 @@ package elmeniawy.eslam.zoo
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -46,10 +47,19 @@ class MainActivity : AppCompatActivity() {
             } else {
                 layoutInflater.inflate(R.layout.animal_item, parent, false)
             }
-            
+
             animalView.tvName.text = animal.name
             animalView.tvDescription.text = animal.description
             animalView.ivImage.setImageResource(animal.image)
+
+            animalView.setOnClickListener {
+                val intent = Intent(context, DetailsActivity::class.java)
+                intent.putExtra("name", animal.name)
+                intent.putExtra("description", animal.description)
+                intent.putExtra("image", animal.image)
+                context.startActivity(intent)
+            }
+
             return animalView
         }
 
