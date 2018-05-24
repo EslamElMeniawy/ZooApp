@@ -35,7 +35,17 @@ class MainActivity : AppCompatActivity() {
         listAnimals.adapter = adapter
     }
 
-    class AnimalsAdapter(var animalsList: ArrayList<Animal>, var context: Context) : BaseAdapter() {
+    fun deleteAnimal(index: Int) {
+        animalsList.removeAt(index)
+        adapter!!.notifyDataSetChanged()
+    }
+
+    fun addAnimal(index: Int) {
+        animalsList.add(index, animalsList[index])
+        adapter!!.notifyDataSetChanged()
+    }
+
+    inner class AnimalsAdapter(var animalsList: ArrayList<Animal>, var context: Context) : BaseAdapter() {
         @SuppressLint("ViewHolder")
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val animal = animalsList[position]
@@ -58,6 +68,15 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("description", animal.description)
                 intent.putExtra("image", animal.image)
                 context.startActivity(intent)
+            }
+
+            animalView.setOnLongClickListener {
+                deleteAnimal(position)
+                return@setOnLongClickListener true
+            }
+
+            animalView.ivImage.setOnClickListener {
+                addAnimal(position)
             }
 
             return animalView
