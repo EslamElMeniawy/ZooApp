@@ -20,12 +20,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Fill animals list
-        animalsList.add(Animal(getString(R.string.baboon), getString(R.string.baboon_desc), R.drawable.baboon))
-        animalsList.add(Animal(getString(R.string.bulldog), getString(R.string.bulldog_desc), R.drawable.bulldog))
-        animalsList.add(Animal(getString(R.string.panda), getString(R.string.panda_desc), R.drawable.panda))
-        animalsList.add(Animal(getString(R.string.swallow_bird), getString(R.string.swallow_bird_desc), R.drawable.swallow_bird))
-        animalsList.add(Animal(getString(R.string.white_tiger), getString(R.string.white_tiger_desc), R.drawable.white_tiger))
-        animalsList.add(Animal(getString(R.string.zebra), getString(R.string.zebra_desc), R.drawable.zebra))
+        animalsList.add(Animal(getString(R.string.baboon), getString(R.string.baboon_desc), R.drawable.baboon, false))
+        animalsList.add(Animal(getString(R.string.bulldog), getString(R.string.bulldog_desc), R.drawable.bulldog, true))
+        animalsList.add(Animal(getString(R.string.panda), getString(R.string.panda_desc), R.drawable.panda, false))
+        animalsList.add(Animal(getString(R.string.swallow_bird), getString(R.string.swallow_bird_desc), R.drawable.swallow_bird, false))
+        animalsList.add(Animal(getString(R.string.white_tiger), getString(R.string.white_tiger_desc), R.drawable.white_tiger, true))
+        animalsList.add(Animal(getString(R.string.zebra), getString(R.string.zebra_desc), R.drawable.zebra, false))
 
         // Define the adapter
         adapter = AnimalsAdapter(animalsList, this)
@@ -39,7 +39,14 @@ class MainActivity : AppCompatActivity() {
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val animal = animalsList[position]
             val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val animalView = layoutInflater.inflate(R.layout.animal_item, parent, false)
+            val animalView: View?
+
+            animalView = if (animal.isKiller) {
+                layoutInflater.inflate(R.layout.animal_killer_item, parent, false)
+            } else {
+                layoutInflater.inflate(R.layout.animal_item, parent, false)
+            }
+            
             animalView.tvName.text = animal.name
             animalView.tvDescription.text = animal.description
             animalView.ivImage.setImageResource(animal.image)
